@@ -209,7 +209,7 @@ int ATTACK(float DISTANCE_ARRAY[4]){
 
 int LOCK_ON(float DISTANCE_ARRAY[4]){ 
  
-  // This function is exactly the same as the above one excpt it will move slower towards the target
+  // This function is exactly the same as the above one except it will move slower towards the target
   int target, target_ARRAY[4], minimum = 10000;
   for(int i = 0; i<2; i++){
     if(DISTANCE_ARRAY[i]<lock_on_distance){ 
