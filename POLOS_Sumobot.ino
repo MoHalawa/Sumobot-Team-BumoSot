@@ -1,4 +1,4 @@
-// SOME BACKGROUND since you probably should understand the sensors somewhat first
+// SOME BACKGROUND about U-sonic sensors
 //There are echo sensors that send a signal with a trigger (all the variables w a T) and receive the reflected signal (all the E's)
 //There are infrared sensors which only have an input, and it is denoted w IR
 int E_FRONT_LEFT = 9; 
@@ -20,9 +20,9 @@ int IR_MID_LEFT = A2;
 int IR_MID_RIGHT = A3;
 int IR_BACK = A4;
 
-//So above is me declaring all of the pins for the ultrasonic sensor (trigger and echo thing), and the infra red sensor. The variable names denote the position of the sensor the the bot
-//Below is pretty much the same thing for the two motors, except the motors have to pins, one to reverse and one to go forward
-//another background thing is that the pins the motors are connected to allow us to give a range of voltages as opposed to on or off (PWM pins) 
+//So above is me declaring all of the pins for the ultrasonic sensor (trigger and echo), and the infra red sensor. The variable names denote the position of the sensor relative to bot
+//Below is the same thing for the two motors, except the motors have two pins each, one to reverse and one to go forward
+//another important fact is that the pins the motors are connected to allow us to give a range of voltages as opposed to on or off (PWM pins) 
 
 int motor_LEFT_FORWARD = 0; 
 int motor_LEFT_REVERSE = 1;
@@ -33,7 +33,7 @@ int motor_RIGHT_SPEED = 6;
 
 
 //These velocity variables simply tell each motor how fast to go (negative values imply going in reverse), and it goes from -1 to 1
-// these are just some constants that I use a lot, and the duration variable is used to decipher the sensor values
+// these are just some constants that I used a lot, and the duration variable is used to decipher the sensor values
 int  max_distance = 75, lock_on_distance = 20, attack_distance = 10, duration; 
 
 bool IR_DEFENSE_OFFENSE = false;
@@ -62,13 +62,13 @@ void SET_VELOCITY();
 
 float DISTANCE[4] = {0,0, 0, 0};
 bool DETECTION[5] ={LOW,LOW,LOW,LOW,LOW};
- //this does something similar but all the values are boolean (basically it sees a white line or not)
+ //this does something similar but all the values are boolean (sees a white line or not)
 
-//Now to be able to manipulate and access all of these variables more effeciently (and elegantly), i've put pretty much everything into an array
+//Now to be able to manipulate and access all of these variables more effeciently (and elegantly)
 
 
 void setup() {
-//below im simply setting all of our outputs and inputs to their respective variables
+//simply setting all of our outputs and inputs to their respective variables
     pinMode(E_FRONT_LEFT, INPUT);
     pinMode(E_FRONT_RIGHT, INPUT);
     pinMode(E_LEFT, INPUT);
@@ -98,7 +98,7 @@ void setup() {
 
 void loop() {
 
- MODE_SELECT(DETECTION, DISTANCE);//this function is pretty much the brains of the whole operation, and it decides when to attack, defend etc
+ MODE_SELECT(DETECTION, DISTANCE);//this function is the brains of the whole operation, and it decides when to attack, defend etc
  ECHO_DECIPHER(ECHO, TRIG, DISTANCE);//after it decides what to do, it will take new data with the same functions we used before and changes them
  INFR_DECIPHER(IR, DETECTION);
 }
